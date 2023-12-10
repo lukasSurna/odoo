@@ -1,0 +1,3 @@
+[options]
+admin_passwd =
+addons_path = /home/lukas/test/custom-addons
