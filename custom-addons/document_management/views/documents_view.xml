@@ -1,54 +1,57 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <data>
-
-         <record id="document_management_tree_view" model="ir.ui.view">
-            <field name="name">document.management.tree</field>
+        <record id="document_management_tree_view" model="ir.ui.view">
+            <field name="name">document_management.tree.view</field>
             <field name="model">document.management.document</field>
             <field name="arch" type="xml">
                 <tree>
+                    <field name="create_date"/>
                     <field name="name"/>
                     <field name="description"/>
                     <field name="company"/>
                     <field name="creator_user"/>
                     <field name="responsible_employees"/>
+                    <!-- Add the button in the tree view -->
+                    <button string="Report" type="object" class="oe_highlight" name="open_document_report"/>
                 </tree>
             </field>
-         </record>
+        </record>
 
         <record id="document_management_form_view" model="ir.ui.view">
-            <field name="name">document.management.form</field>
+            <field name="name">document_management.form.view</field>
             <field name="model">document.management.document</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
                         <group>
+                            <field name="create_date"/>
                             <field name="name"/>
                             <field name="description"/>
-                            <group>
-                                <field name="company"/>
-                                <field name="creator_user"/>
-                            </group>
-                            <group>
-                                <field name="responsible_employees"/>
-                            </group>
+                            <field name="company"/>
+                            <field name="creator_user"/>
+                            <field name="responsible_employees"/>
                         </group>
+                        <!-- Add the button in the form view -->
+                        <footer>
+                            <button string="Report" type="object" class="oe_highlight" name="open_document_report"/>
+                        </footer>
                     </sheet>
                 </form>
             </field>
         </record>
 
-
         <record id="action_documents" model="ir.actions.act_window">
-            <field name="name">Document</field>
+            <field name="name">Documents</field>
             <field name="res_model">document.management.document</field>
             <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="document_management_tree_view"/>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
-                    Add document
+                    Nothing to show
                 </p>
             </field>
         </record>
+
+        <menuitem id="menu_document" name="Documents" parent="base.menu_administration" action="action_documents"/>
     </data>
 </odoo>

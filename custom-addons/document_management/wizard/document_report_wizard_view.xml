@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="document_report_form_view_wizard" model="ir.ui.view">
+            <field name="name">document.report.form.view.wizard</field>
+            <field name="model">document.report.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                            <field name="responsible_employee"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Show" type="object" name="document_report"/>
+                        <button string="Cancel" special="cancel" class="btn-btn-secondary"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="document_report_action" model="ir.actions.act_window">
+            <field name="name">Document Report</field>
+            <field name="res_model">document.report.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>
